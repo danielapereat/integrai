@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard'
 import Methoods from './Pages/Methoods'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Home from './Pages/Home'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1 className='text-black'>Home</h1>
+        element: <Home />
       },
       {
         path: '/integrations/:id',

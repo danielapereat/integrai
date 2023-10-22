@@ -8,10 +8,13 @@ import ButtonPrimary from '../Components/buttonPrimary';
 import ButtonSecondary from '../Components/ButtonSecondary';
 import Cards from '../Components/Cards';
 import CreateModal from '../Components/CreateModal';
+import SideBar from '../Components/SideBar';
+import SuccessModal from '../Components/SuccessModal';
 
 function Methoods({}) {
     const { integration, id } = useParams();
     const [openModal, setOpenModal] = useState(true);
+    const [openModalSucces, setOpenModalSucces] = useState(false);
     const [title, setTitle] = useState('New');
     const saveIntegration = () => {
         setOpenModal(false);
@@ -27,6 +30,11 @@ function Methoods({}) {
                 <CreateModal title={'Create Methood'} setOpenModal={setOpenModal} action={saveIntegration}/>
             ): (null)
             }
+            {openModalSucces ? (
+                <SuccessModal title={'Congratulatuons!'} setOpenModal={setOpenModal} description={'Your method has been created successfully'}/>
+            ): (null)
+            }
+            <SideBar />
             <div className="ml-64 px-12 py-4 w-full">
                 <div className='flex flex-row items-center'>
                     <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">{title}</h1>
@@ -64,6 +72,9 @@ function Methoods({}) {
                 <div className='flex flex-row w-full justify-end my-4'>
                     <ButtonSecondary title={'Cancel'} action={'hola'}/>
                     <ButtonPrimary title={'Save'} action={'hola'}/>
+                </div>
+                <div className='flex flex-row w-full justify-center my-4'>
+                    <ButtonPrimary title={'Create'} action={setOpenModalSucces}/>
                 </div>
             </div>
         </>

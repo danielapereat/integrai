@@ -13,7 +13,7 @@ function Layout() {
             <header className="bg-white drop-shadow-md sticky top-0">
                 <nav className=" mx-4 flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img className="h-8 w-auto" src={Logo} alt="" />
                         </a>
@@ -27,14 +27,6 @@ function Layout() {
                 </nav>
             </header>
             <div className="flex flex-row">
-                <aside className="fixed shadow-md top-20 px-8 py-4 left-0 w-64 h-full">
-                    <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">Integrations</h1>
-                    <NavOption />
-                    <NavOption />
-                    <NavOption />
-                    <NavOption />
-                    <NavOption />
-                </aside>
                 <Outlet />
             </div>
         </div>

@@ -1,6 +1,6 @@
-function ButtonPrimary({title}) {
+function ButtonPrimary({title, action}) {
     return (
-        <button className='bg-indigo-700 px-4 ml-4 rounded text-white'>{title}</button>
+        <button onClick={() =>action(false)} className='bg-indigo-700 px-4 ml-4 rounded text-white'>{title}</button>
     )
 };
 

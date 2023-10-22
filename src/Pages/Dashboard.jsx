@@ -8,10 +8,12 @@ import ButtonPrimary from '../Components/buttonPrimary';
 import ButtonSecondary from '../Components/ButtonSecondary';
 import Cards from '../Components/Cards';
 import CreateModal from '../Components/CreateModal';
+import SideBar from '../Components/SideBar';
 
 function Dashboard({}) {
     const { id } = useParams();
     const [openModal, setOpenModal] = useState(true);
+    const [openModalSucces, setOpenModalSucces] = useState(false);
     const [title, setTitle] = useState('New');
     const saveIntegration = () => {
         setOpenModal(false);
@@ -27,6 +29,11 @@ function Dashboard({}) {
                 <CreateModal title={'Create Integration'} setOpenModal={setOpenModal} action={saveIntegration}/>
             ): (null)
             }
+            {openModalSucces ? (
+                <SuccessModal title={'Congratulatuons!'} setOpenModal={setOpenModal} description={'Your integration has been created successfully. You can see your new integration by following this link: Link'}/>
+            ): (null)
+            }
+            <SideBar />
             <div className="ml-64 px-12 py-4 w-full">
                 <div className='flex flex-row items-center'>
                     <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">Open Pay</h1>
