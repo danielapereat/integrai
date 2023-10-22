@@ -5,6 +5,7 @@ const initialState={
     name: "",
     providerUrl: "",
     files_data:[],
+    status: "",
 };
 
 function reducer(state=initialState,action) {
@@ -15,6 +16,7 @@ function reducer(state=initialState,action) {
                 name: "",
                 providerUrl:"",
                 files_data:[],
+                status: action.payload
             }
         }
         case SET_NAME: {
