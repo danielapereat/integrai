@@ -49,21 +49,21 @@ function Methoods({}) {
                 <div className='flex w-full justify-end my-4'>
                     <ButtonPrimary title={'Save'}/>
                 </div>
-                <div className='flex w-full justify-between my-8'>
-                    <h2 className='text-xl'>Methoods</h2>
-                    <ButtonSecondary title={'Create Methood'} icon/>
+                <div className='flex w-full justify-start my-8'>
+                    <h2 className='text-xl'>Builder</h2>
                 </div>
-                <div className='grid grid-cols-4 gap-4'>
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
+                <textarea className='w-full border rounded h-96'/>
+                <div className='flex flex-row w-full justify-end my-4'>
+                    <ButtonSecondary title={'Cancel'} action={'hola'}/>
+                    <ButtonPrimary title={'Save'} action={'hola'}/>
                 </div>
-                <div className='flex w-full justify-center my-4'>
-                    <ButtonPrimary title={'Generate'}/>
+                <div className='flex w-full justify-start my-8'>
+                    <h2 className='text-xl'>Models</h2>
+                </div>
+                <textarea className='w-full border rounded h-96'/>
+                <div className='flex flex-row w-full justify-end my-4'>
+                    <ButtonSecondary title={'Cancel'} action={'hola'}/>
+                    <ButtonPrimary title={'Save'} action={'hola'}/>
                 </div>
             </div>
         </>

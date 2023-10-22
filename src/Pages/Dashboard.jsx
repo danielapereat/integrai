@@ -12,6 +12,7 @@ import CreateModal from '../Components/CreateModal';
 function Dashboard({}) {
     const { id } = useParams();
     const [openModal, setOpenModal] = useState(true);
+    const [title, setTitle] = useState('New');
     const saveIntegration = () => {
         setOpenModal(false);
     };
@@ -53,13 +54,7 @@ function Dashboard({}) {
                     <ButtonSecondary title={'Create Methood'} icon/>
                 </div>
                 <div className='grid grid-cols-4 gap-4'>
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
-                    <Cards />
+                    <Cards title={title} methood={'Purchase'}/>
                 </div>
                 <div className='flex w-full justify-center my-4'>
                     <ButtonPrimary title={'Generate'}/>

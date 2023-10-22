@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 //Components
 import Layout from './Components/Layout'
 import Dashboard from './Pages/Dashboard'
+import Methoods from './Pages/Methoods'
 
 const router = createBrowserRouter([
   {
@@ -21,12 +22,12 @@ const router = createBrowserRouter([
         element: <h1 className='text-black'>Home</h1>
       },
       {
-        path: '/Integrations/:id',
+        path: '/integrations/:id',
         element: <Dashboard />
       },
       {
-        path: ':integration/Methood/:id',
-        element: <Dashboard />
+        path: ':integration/methood/:id',
+        element: <Methoods />
       }
     ]
   }
