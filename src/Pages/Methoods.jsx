@@ -59,39 +59,41 @@ function Methoods({}) {
             ): (null)
             }
             <SideBar state={reduxState}/>
-            <div className="ml-64 px-12 py-4 w-full">
-                <div className='flex flex-row items-center'>
-                    <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">{method?.name == undefined ? methodName : method?.name}</h1>
-                    <button
-                        className='outline-none'
-                        onClick={() => console.log('click')}
-                    >
-                        <FiEdit2 className=' mx-2 text-indigo-700'/>
-                    </button>
-                </div>
-                <div className='border rounded flex flex-row h-8'>
-                    <div className='h-full flex justify-center rounded-l text-white bg-indigo-700 h-full w-8 items-center'>
-                        <BiLink />
+            <div className="ml-64 px-12 py-4 w-full overflow-x-auto h-full">
+                <div>
+                    <div className='flex flex-row items-center'>
+                        <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">{method?.name == undefined ? methodName : method?.name}</h1>
+                        <button
+                            className='outline-none'
+                            onClick={() => console.log('click')}
+                        >
+                            <FiEdit2 className=' mx-2 text-indigo-700'/>
+                        </button>
                     </div>
-                    <input 
-                        onChange={(e)=> setProviderURL(e.target.value)}
-                        className='w-full px-4 outline-none'
-                        placeholder='Base URL'
-                    />
-                </div>
-                <div className='flex w-full justify-end my-4'>
-                    <ButtonPrimary title={'Save'}/>
-                </div>
-                <div className='flex w-full justify-start my-8'>
-                    <h2 className='text-xl'>Builder</h2>
-                </div>
-                <textarea defaultValue={method?.builder} className='w-full border rounded h-96' onChange={(e) => setBuilderData(e.target.value)}/>
-                <div className='flex w-full justify-start my-8'>
-                    <h2 className='text-xl'>Models</h2>
-                </div>
-                <textarea defaultValue={method?.models} className='w-full border rounded h-96' onChange={(e) => setModelsData(e.target.value)}/>
-                <div className='flex flex-row w-full justify-center my-4'>
-                    <ButtonPrimary title={'Create'} action={handleAddMethod}/>
+                    <div className='border rounded flex flex-row h-8'>
+                        <div className='h-full flex justify-center rounded-l text-white bg-indigo-700 h-full w-8 items-center'>
+                            <BiLink />
+                        </div>
+                        <input 
+                            onChange={(e)=> setProviderURL(e.target.value)}
+                            className='w-full px-4 outline-none'
+                            placeholder='Base URL'
+                        />
+                    </div>
+                    <div className='flex w-full justify-end my-4'>
+                        <ButtonPrimary title={'Save'}/>
+                    </div>
+                    <div className='flex w-full justify-start my-8'>
+                        <h2 className='text-xl'>Builder</h2>
+                    </div>
+                    <textarea defaultValue={method?.builder} className='w-full border rounded h-96' onChange={(e) => setBuilderData(e.target.value)}/>
+                    <div className='flex w-full justify-start my-8'>
+                        <h2 className='text-xl'>Models</h2>
+                    </div>
+                    <textarea defaultValue={method?.models} className='w-full border rounded h-96' onChange={(e) => setModelsData(e.target.value)}/>
+                    <div className='flex flex-row w-full justify-center my-4'>
+                        <ButtonPrimary title={'Create'} action={handleAddMethod}/>
+                    </div>
                 </div>
             </div>
         </>

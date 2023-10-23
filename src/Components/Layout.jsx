@@ -26,7 +26,7 @@ function Layout() {
                     </div>
                 </nav>
             </header>
-            <div className="flex flex-row">
+            <div className="flex flex-row h-[calc(100vh-80px)]">
                 <Outlet />
             </div>
         </div>
