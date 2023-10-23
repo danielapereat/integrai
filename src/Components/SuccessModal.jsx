@@ -8,7 +8,7 @@ function SuccessModal({title, setOpenModal, description}) {
                 <h1 className="text-indigo-700 font-semibold mb-4">{title}</h1>
                 <p>{description}</p>
                 <div className='flex flex-row w-full justify-center my-4'>
-                    <ButtonPrimary title={'OK'} action={setOpenModal}/>
+                <ButtonPrimary title={'OK'} isModal action={setOpenModal}/>
                 </div>
             </div>
         </div>

@@ -10,34 +10,58 @@ import Cards from '../Components/Cards';
 import CreateModal from '../Components/CreateModal';
 import SideBar from '../Components/SideBar';
 import SuccessModal from '../Components/SuccessModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMethod } from '../actions/actions';
 
 function Methoods({}) {
     const { integration, id } = useParams();
+    const [method, setMethod] = useState("");
+    const [methodName, setMethodName] = useState("");
+    const [providerURL, setProviderURL] = useState("");
+    const [builderData, setBuilderData] = useState("");
+    const [modelsData, setModelsData] = useState("");
     const [openModal, setOpenModal] = useState(true);
     const [openModalSucces, setOpenModalSucces] = useState(false);
-    const [title, setTitle] = useState('New');
+    const dispatch = useDispatch();
+    const reduxState = useSelector((state) => state);
     const saveIntegration = () => {
         setOpenModal(false);
     };
 
+    const handleAddMethod = () => {
+        dispatch(addMethod({
+            name: methodName,
+            builder: builderData,
+            models: modelsData,
+        }))
+        setOpenModalSucces(true)
+    }
+
+    useEffect(() => {
+    }, [methodName]);
+
+    useEffect(() => {
+    }, [reduxState]);
+
     useEffect(() => {
         setOpenModal(true);
+        setMethod(reduxState?.methods?.find((e)=>e.name == id))
     }, []);
 
     return (
         <>
             {id == 'new' &&  openModal ? (
-                <CreateModal title={'Create Methood'} setOpenModal={setOpenModal} action={saveIntegration}/>
+                <CreateModal title={'Create Methood'} setInputValue={setMethodName} setOpenModal={setOpenModal} action={saveIntegration}/>
             ): (null)
             }
             {openModalSucces ? (
-                <SuccessModal title={'Congratulatuons!'} setOpenModal={setOpenModal} description={'Your method has been created successfully'}/>
+                <SuccessModal title={'Congratulations!'} setOpenModal={setOpenModalSucces} description={'Your method has been created successfully'}/>
             ): (null)
             }
-            <SideBar />
+            <SideBar state={reduxState}/>
             <div className="ml-64 px-12 py-4 w-full">
                 <div className='flex flex-row items-center'>
-                    <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">{title}</h1>
+                    <h1 className="text-2xl my-4 font-semibold leading-6 text-indigo-700">{method?.name == undefined ? methodName : method?.name}</h1>
                     <button
                         className='outline-none'
                         onClick={() => console.log('click')}
@@ -50,6 +74,7 @@ function Methoods({}) {
                         <BiLink />
                     </div>
                     <input 
+                        onChange={(e)=> setProviderURL(e.target.value)}
                         className='w-full px-4 outline-none'
                         placeholder='Base URL'
                     />
@@ -60,21 +85,13 @@ function Methoods({}) {
                 <div className='flex w-full justify-start my-8'>
                     <h2 className='text-xl'>Builder</h2>
                 </div>
-                <textarea className='w-full border rounded h-96'/>
-                <div className='flex flex-row w-full justify-end my-4'>
-                    <ButtonSecondary title={'Cancel'} action={'hola'}/>
-                    <ButtonPrimary title={'Save'} action={'hola'}/>
-                </div>
+                <textarea defaultValue={method?.builder} className='w-full border rounded h-96' onChange={(e) => setBuilderData(e.target.value)}/>
                 <div className='flex w-full justify-start my-8'>
                     <h2 className='text-xl'>Models</h2>
                 </div>
-                <textarea className='w-full border rounded h-96'/>
-                <div className='flex flex-row w-full justify-end my-4'>
-                    <ButtonSecondary title={'Cancel'} action={'hola'}/>
-                    <ButtonPrimary title={'Save'} action={'hola'}/>
-                </div>
+                <textarea defaultValue={method?.models} className='w-full border rounded h-96' onChange={(e) => setModelsData(e.target.value)}/>
                 <div className='flex flex-row w-full justify-center my-4'>
-                    <ButtonPrimary title={'Create'} action={setOpenModalSucces}/>
+                    <ButtonPrimary title={'Create'} action={handleAddMethod}/>
                 </div>
             </div>
         </>

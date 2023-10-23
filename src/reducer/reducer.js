@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { ADD_FILE, GENERATE_INTEGRATION, SET_NAME, SET_PROVIDER_URL } from '../actions/actionsName';
+import { ADD_METHOD, GENERATE_INTEGRATION, SET_NAME, SET_PROVIDER_URL } from '../actions/actionsName';
 
 const initialState={
     name: "",
     providerUrl: "",
-    files_data:[],
+    methods:[],
     status: "",
 };
 
@@ -31,10 +31,10 @@ function reducer(state=initialState,action) {
                 providerUrl: action.payload
             }
         }
-        case ADD_FILE: {
+        case ADD_METHOD: {
             return {
                 ...state,
-                files_data: [...state.files_data, action.payload]
+                methods: [...state.methods, action.payload]
             }
         }
         default: {
