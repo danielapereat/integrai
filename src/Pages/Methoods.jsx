@@ -29,10 +29,12 @@ function Methoods({}) {
     };
 
     const handleAddMethod = () => {
+        let builderToFormat = `${builderData}`
+        let modelsDataToFormat = `${modelsData}`
         dispatch(addMethod({
             name: methodName,
-            builder: builderData,
-            models: modelsData,
+            builder: builderToFormat.replace(/\n/g, '\\n').replace(/\t/g, '\\t'),
+            models:  modelsDataToFormat.replace(/\n/g, '\\n').replace(/\t/g, '\\t'),
         }))
         setOpenModalSucces(true)
     }

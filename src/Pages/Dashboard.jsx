@@ -10,7 +10,7 @@ import Cards from '../Components/Cards';
 import CreateModal from '../Components/CreateModal';
 import SideBar from '../Components/SideBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { setName, setReduxProviderURL } from '../actions/actions';
+import { generateIntegration, setName, setReduxProviderURL } from '../actions/actions';
 
 function Dashboard({}) {
     const { id } = useParams();
@@ -32,6 +32,10 @@ function Dashboard({}) {
     const handleName = (name) => {
         dispatch(setName(name))
     } 
+
+    const handleGenerate = () => {
+        dispatch(generateIntegration())
+    }
 
     const handleProviderURL = () => {
         dispatch(setReduxProviderURL(providerURL))
@@ -87,7 +91,7 @@ function Dashboard({}) {
                     {reduxState.methods.map((e) => <Cards title={reduxState.name} methood={e.name}/>)}
                 </div>
                 <div className='flex w-full justify-center my-4'>
-                    <ButtonPrimary title={'Generate'}/>
+                    <ButtonPrimary title={'Generate'} action={handleGenerate}/>
                 </div>
             </div>
         </>
